@@ -1,5 +1,5 @@
 #### Preamble ####
-# Purpose: Tests... [...UPDATE THIS...]
+# Purpose: Sanity check of the data
 # Author: Rohan Alexander [...UPDATE THIS...]
 # Date: 11 February 2023 [...UPDATE THIS...]
 # Contact: rohan.alexander@utoronto.ca [...UPDATE THIS...]
@@ -9,7 +9,12 @@
 
 
 #### Workspace setup ####
+install.packages("tidyverse")
 library(tidyverse)
-# [...UPDATE THIS...]
+data <- read_csv("data/raw_data/simulated.csv")
 
-#### Test data ####
+# Test for negative numbers
+data$number_of_marriage |> min() <= 0
+
+# Test for NAs
+all(is.na(data$number_of_marriage))
